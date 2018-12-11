@@ -109,4 +109,13 @@ type AuthInfo struct {
 	// DefaultDomain is the domain ID to fall back on if no other domain has
 	// been specified and a domain is required for scope.
 	DefaultDomain string `yaml:"default_domain"`
+
+	// oidcToken is the OIDC access token.
+	oidcToken string `yaml:"oidc_token"`
+
+	// oidcIDP is the OIDC identity provider.
+	oidcIDP string `yaml:"oidc_idp"`
+
+	// oidcProtocol is the OIDC protocol.
+	oidcProtocol string `yaml:"oidc_protocol"`
 }

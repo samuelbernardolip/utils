@@ -8,7 +8,7 @@ import (
 
 	"github.com/gophercloud/gophercloud"
 	"github.com/gophercloud/gophercloud/openstack"
-	"github.com/gophercloud/utils/gnocchi"
+	"github.com/samuelbernardolip/utils/gnocchi"
 )
 
 // NewGnocchiV1Client returns a *ServiceClient for making calls

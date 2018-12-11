@@ -8,8 +8,6 @@ import (
 
 	"github.com/gophercloud/gophercloud"
 	"github.com/gophercloud/gophercloud/openstack"
-
-	"gopkg.in/yaml.v2"
 )
 
 // AuthType respresents a valid method of authentication.
@@ -30,6 +28,9 @@ const (
 	AuthV3Password AuthType = "v3password"
 	// AuthV3Token defines version 3 of the token
 	AuthV3Token AuthType = "v3token"
+
+	// Authv3OIDCaccessToken defines version 3 of the OIDC token
+	OIDCauthV3AccessToken AuthType = "v3oidcaccesstoken"
 )
 
 // ClientOpts represents options to customize the way a client is
@@ -333,6 +334,8 @@ func determineIdentityAPI(cloud *Cloud, opts *ClientOpts) string {
 			identityAPI = "3"
 		case AuthV3Token:
 			identityAPI = "3"
+		case OIDCauthV3AccessToken:
+			identityAPI = "3"
 		}
 	}
 
@@ -517,6 +520,24 @@ func v3auth(cloud *Cloud, opts *ClientOpts) (*gophercloud.AuthOptions, error) {
 		}
 	}
 
+	if cloud.AuthInfo.oidcToken == "" {
+		if v := os.Getenv(envPrefix + "ACCESS_TOKEN"); v != "" {
+			cloud.AuthInfo.oidcToken = v
+		}
+	}
+
+	if cloud.AuthInfo.oidcIDP == "" {
+		if v := os.Getenv(envPrefix + "IDENTITY_PROVIDER"); v != "" {
+			cloud.AuthInfo.oidcIDP = v
+		}
+	}
+
+	if cloud.AuthInfo.oidcProtocol == "" {
+		if v := os.Getenv(envPrefix + "PROTOCOL"); v != "" {
+			cloud.AuthInfo.oidcProtocol = v
+		}
+	}
+
 	// Build a scope and try to do it correctly.
 	// https://github.com/openstack/os-client-config/blob/master/os_client_config/config.py#L595
 	scope := new(gophercloud.AuthScope)
@@ -552,6 +573,9 @@ func v3auth(cloud *Cloud, opts *ClientOpts) (*gophercloud.AuthOptions, error) {
 		TenantName:       cloud.AuthInfo.ProjectName,
 		DomainID:         cloud.AuthInfo.UserDomainID,
 		DomainName:       cloud.AuthInfo.UserDomainName,
+		oidcToken:        cloud.AuthInfo.oidcToken,
+		oidcIDP:          cloud.AuthInfo.oidcIDP,
+		oidcProtocol:     cloud.AuthInfo.oidcProtocol,
 	}
 
 	// If an auth_type of "token" was specified, then make sure
@@ -559,7 +583,10 @@ func v3auth(cloud *Cloud, opts *ClientOpts) (*gophercloud.AuthOptions, error) {
 	// unsetting a few other auth options. The reason this is done
 	// here is to wait until all auth settings (both in clouds.yaml
 	// and via environment variables) are set and then unset them.
-	if strings.Contains(string(cloud.AuthType), "token") || ao.TokenID != "" {
+	if strings.Contains(string(cloud.AuthType), "v3oidcaccesstoken") {
+		ao.Password = ""
+		ao.TokenID = ""
+	} else if strings.Contains(string(cloud.AuthType), "token") || ao.TokenID != "" {
 		ao.Username = ""
 		ao.Password = ""
 		ao.UserID = ""

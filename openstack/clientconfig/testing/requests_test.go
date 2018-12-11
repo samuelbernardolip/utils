@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/utils/openstack/clientconfig"
+	"github.com/samuelbernardolip/utils/openstack/clientconfig"
 
 	th "github.com/gophercloud/gophercloud/testhelper"
 )

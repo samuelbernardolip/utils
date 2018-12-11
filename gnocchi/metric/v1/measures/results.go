@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gophercloud/utils/gnocchi"
+	"github.com/samuelbernardolip/utils/gnocchi"
 
 	"github.com/gophercloud/gophercloud"
 	"github.com/gophercloud/gophercloud/pagination"
