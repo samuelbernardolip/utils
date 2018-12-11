@@ -1,8 +1,8 @@
 package metrics
 
 import (
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/samuelbernardolip/gophercloud"
+	"github.com/samuelbernardolip/gophercloud/pagination"
 	"github.com/samuelbernardolip/utils/gnocchi/metric/v1/archivepolicies"
 	"github.com/samuelbernardolip/utils/gnocchi/metric/v1/resources"
 )

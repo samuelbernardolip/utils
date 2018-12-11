@@ -4,10 +4,10 @@ import (
 	"os"
 	"testing"
 
-	"github.com/gophercloud/gophercloud"
+	"github.com/samuelbernardolip/gophercloud"
 	"github.com/samuelbernardolip/utils/openstack/clientconfig"
 
-	th "github.com/gophercloud/gophercloud/testhelper"
+	th "github.com/samuelbernardolip/gophercloud/testhelper"
 )
 
 func TestGetCloudFromYAML(t *testing.T) {

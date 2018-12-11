@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gophercloud/gophercloud/pagination"
-	th "github.com/gophercloud/gophercloud/testhelper"
+	"github.com/samuelbernardolip/gophercloud/pagination"
+	th "github.com/samuelbernardolip/gophercloud/testhelper"
 	"github.com/samuelbernardolip/utils/gnocchi/metric/v1/resources"
 	fake "github.com/samuelbernardolip/utils/gnocchi/testhelper/client"
 )

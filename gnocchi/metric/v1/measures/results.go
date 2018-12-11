@@ -7,8 +7,8 @@ import (
 
 	"github.com/samuelbernardolip/utils/gnocchi"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/pagination"
+	"github.com/samuelbernardolip/gophercloud"
+	"github.com/samuelbernardolip/gophercloud/pagination"
 )
 
 // CreateResult represents the result of a create operation. Call its

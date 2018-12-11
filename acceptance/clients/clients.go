@@ -6,8 +6,8 @@ package clients
 import (
 	"os"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack"
+	"github.com/samuelbernardolip/gophercloud"
+	"github.com/samuelbernardolip/gophercloud/openstack"
 	"github.com/samuelbernardolip/utils/gnocchi"
 )
 

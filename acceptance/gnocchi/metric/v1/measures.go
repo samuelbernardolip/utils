@@ -4,8 +4,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/acceptance/tools"
+	"github.com/samuelbernardolip/gophercloud"
+	"github.com/samuelbernardolip/gophercloud/acceptance/tools"
 	"github.com/samuelbernardolip/utils/gnocchi/metric/v1/measures"
 )
 

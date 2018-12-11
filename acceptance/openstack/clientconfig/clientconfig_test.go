@@ -5,10 +5,10 @@ package clientconfig
 import (
 	"testing"
 
-	"github.com/gophercloud/gophercloud/openstack/compute/v2/servers"
+	"github.com/samuelbernardolip/gophercloud/openstack/compute/v2/servers"
 
-	acc_compute "github.com/gophercloud/gophercloud/acceptance/openstack/compute/v2"
-	acc_tools "github.com/gophercloud/gophercloud/acceptance/tools"
+	acc_compute "github.com/samuelbernardolip/gophercloud/acceptance/openstack/compute/v2"
+	acc_tools "github.com/samuelbernardolip/gophercloud/acceptance/tools"
 
 	cc "github.com/samuelbernardolip/utils/openstack/clientconfig"
 )
